@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manchester Student Accommodations 3D Map</title>
+    <meta name="description"
+        content="Interactive 3D map of student accommodations in Manchester, UK. Explore buildings, nearby amenities, pricing and university distances.">
+
+    <!-- Mapbox GL JS -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css' rel='stylesheet' />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="map"></div>
+
+    <!-- ── Slide-out Info Panel ─────────────────────────────────────────── -->
+    <aside id="info-panel" class="panel" role="complementary" aria-label="Accommodation details">
+        <button id="close-panel" class="close-btn" aria-label="Close panel">&times;</button>
+
+        <div class="panel-content">
+
+            <!-- Header -->
+            <h2 id="building-name">Accommodation Name</h2>
+            <p id="building-location" class="location">Location details</p>
+
+            <!-- Price & Rating row -->
+            <div class="price-rating-row">
+                <div class="price-block">
+                    <div class="section-label">Rent</div>
+                    <div id="price-display" class="price-display">—</div>
+                </div>
+                <div class="rating-block">
+                    <div class="section-label">Rating</div>
+                    <div id="rating-display" class="rating-display">—</div>
+                    <div id="review-count" class="review-count"></div>
+                </div>
+            </div>
+
+            <!-- University -->
+            <div class="info-section">
+                <div class="section-label">
+                    University
+                    <span id="university-abbr" class="badge"></span>
+                </div>
+                <div id="university-name" class="section-value">—</div>
+                <div id="university-dist" class="section-sub"></div>
+            </div>
+
+            <!-- Property Details -->
+            <div class="info-section">
+                <div class="section-label">Property Details</div>
+                <ul id="property-details-list" class="detail-list"></ul>
+            </div>
+
+            <!-- Nearby Amenities -->
+            <div class="info-section">
+                <div class="section-label">Nearby Amenities <span class="section-sub">(within 1 km)</span></div>
+                <ul id="amenities-list" class="amenity-list"></ul>
+            </div>
+
+            <!-- View Listing CTA -->
+            <a id="listing-link" href="#" target="_blank" rel="noopener" class="cta-btn" style="display:none;">
+                View Full Listing &rarr;
+            </a>
+
+        </div>
+    </aside>
+
+    <!-- ── Data (order matters: data files before db.js before app.js) ──── -->
+    <script src="data/manchester_buildings.js"></script>
+    <script src="data/manchester_amenities.js"></script>
+    <script src="db.js"></script>
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+</body>
+
+</html>
